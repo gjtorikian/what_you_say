@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require "test_helper"
+require "json"
 
 class TestWhatYouSayDetect < Minitest::Test
   def setup
@@ -35,5 +36,15 @@ class TestWhatYouSayDetect < Minitest::Test
     assert_operator(result.confidence, :<, 0.5)
     assert_operator(result.confidence, :>, 0)
     assert_equal(result.confidence.class, Float)
+  end
+
+  def test_with_hella_examples
+    example_data = JSON.parse(File.read(File.join("test", "fixtures", "examples.json")))
+
+    example_data.each_pair do |lang_code, text|
+      detected_lang = WhatYouSay._?(text).lang
+
+      assert_equal(lang_code, detected_lang.code)
+    end
   end
 end
