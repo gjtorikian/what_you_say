@@ -37,6 +37,14 @@ assert_predicate(result, :reliable?)
 assert_equal(1, result.confidence)
 ```
 
+You also have to opportunity to `to_s` some output:
+
+```ruby
+text = "Եվ ահա ես ստանում եմ մի զանգ պատահական տղայից"
+WhatYouSay._?(text).to_s
+#=> #<WhatYouSay::Info lang=#<WhatYouSay::Lang code="hye" name="Հայերեն" eng_name="Armenian"> script="Armenian" reliable=true confidence=1>
+```
+
 ## Development
 
 After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake compile test` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
