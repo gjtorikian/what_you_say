@@ -1,0 +1,12 @@
+[package]
+name = "what_you_say"
+version = "1.0.0"
+edition = "2021"
+
+[dependencies]
+magnus =  "0.5"
+whatlang = "0.16"
+
+[lib]
+name = "what_you_say"
+crate-type = ["cdylib"]
