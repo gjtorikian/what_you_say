@@ -1,5 +1,7 @@
 # WhatYouSay
 
+Quick and easy natural language detection. Instantly identify the source language of a piece of text.
+
 ![What you say!!](https://user-images.githubusercontent.com/64050/224237944-ceb2570c-d544-474a-8c91-41433efdee43.png)
 
 - Supports [69 languages](https://github.com/greyblake/whatlang-rs/blob/master/SUPPORTED_LANGUAGES.md) (nice!)
