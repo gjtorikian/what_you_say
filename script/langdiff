@@ -1,0 +1,51 @@
+#!/usr/bin/env ruby
+
+# frozen_string_literal: true
+
+require "json"
+require "what_you_say"
+
+# From `SELECT cfgname FROM pg_ts_config;`
+postgres_dictionaries = %w[simple
+    arabic
+    armenian
+    basque
+    catalan
+    danish
+    dutch
+    english
+    finnish
+    french
+    german
+    greek
+    hindi
+    hungarian
+    indonesian
+    irish
+    italian
+    lithuanian
+    nepali
+    norwegian
+    portuguese
+    romanian
+    russian
+    serbian
+    spanish
+    swedish
+    tamil
+    turkish
+    yiddish]
+
+
+example_data = JSON.parse(File.read(File.join("test", "fixtures", "examples.json")))
+
+eng_names = []
+example_data.each_pair do |lang_code, text|
+  detected_lang = WhatYouSay._?(text).lang
+
+  eng_names << detected_lang.eng_name
+end
+
+eng_names = eng_names.uniq.sort.map(&:downcase)
+
+puts postgres_dictionaries - eng_names

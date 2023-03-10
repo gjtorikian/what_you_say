@@ -1,6 +1,6 @@
 # WhatYouSay
 
-Quick and easy natural language detection. Instantly identify the source language of a piece of text.
+Quick and easy natural language detection wrapping the [Whatlang Rust crate](https://github.com/greyblake/whatlang-rs). Instantly identify the source language of a piece of text.
 
 ![What you say!!](https://user-images.githubusercontent.com/64050/224237944-ceb2570c-d544-474a-8c91-41433efdee43.png)
 
@@ -25,6 +25,8 @@ If bundler is not being used to manage dependencies, install the gem by executin
 The method to call is `_?`. Why? Because. Pass in the text whose language you want to detect:
 
 ```ruby
+require "what_you_say"
+
 text = "Ĉu vi ne volas eklerni Esperanton? Bonvolu! Estas unu de la plej bonaj aferoj!"
 
 result = WhatYouSay._?(text)
