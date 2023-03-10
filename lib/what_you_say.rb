@@ -7,7 +7,6 @@ require "what_you_say/lang"
 require "what_you_say/version"
 
 if ENV.fetch("DEBUG", false)
-  require "awesome_print"
   require "debug"
 end
 
