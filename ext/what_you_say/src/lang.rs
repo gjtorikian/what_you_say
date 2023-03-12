@@ -40,7 +40,7 @@ impl WhatYouSayLang {
         self.eng_name.as_str()
     }
 
-    pub fn to_s(&self) -> String {
+    pub fn inspect(&self) -> String {
         format!(
             "#<WhatYouSay::Lang code=\"{0}\" name=\"{1}\" eng_name=\"{2}\">",
             self.code, self.name, self.eng_name

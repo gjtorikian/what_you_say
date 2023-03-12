@@ -53,14 +53,14 @@ fn init() -> Result<(), Error> {
     c_info.define_method("script", method!(WhatYouSayInfo::script, 0))?;
     c_info.define_method("reliable?", method!(WhatYouSayInfo::reliable, 0))?;
     c_info.define_method("confidence", method!(WhatYouSayInfo::confidence, 0))?;
-    c_info.define_method("to_s", method!(WhatYouSayInfo::to_s, 0))?;
+    c_info.define_method("inspect", method!(WhatYouSayInfo::inspect, 0))?;
 
     let c_lang = module.define_class("Lang", Default::default())?;
     c_lang.define_singleton_method("all", function!(WhatYouSayLang::all, 0))?;
     c_lang.define_method("code", method!(WhatYouSayLang::code, 0))?;
     c_lang.define_method("name", method!(WhatYouSayLang::name, 0))?;
     c_lang.define_method("eng_name", method!(WhatYouSayLang::eng_name, 0))?;
-    c_lang.define_method("to_s", method!(WhatYouSayLang::to_s, 0))?;
+    c_lang.define_method("inspect", method!(WhatYouSayLang::inspect, 0))?;
 
     Ok(())
 }

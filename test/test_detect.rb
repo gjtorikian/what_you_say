@@ -19,14 +19,14 @@ class TestWhatYouSayDetect < Minitest::Test
     assert_equal(1, result.confidence)
   end
 
-  def test_to_s_works
+  def test_inspect_works
     result = WhatYouSay._?(@text)
 
     actual_lang = "#<WhatYouSay::Lang code=\"epo\" name=\"Esperanto\" eng_name=\"Esperanto\">"
     actual_info = "#<WhatYouSay::Info lang=#{actual_lang} script=\"Latin\" reliable=true confidence=1>"
 
-    assert_equal(actual_info, result.to_s)
-    assert_equal(actual_lang, result.lang.to_s)
+    assert_equal(actual_info, result.inspect)
+    assert_equal(actual_lang, result.lang.inspect)
   end
 
   def test_confidence_is_a_float

@@ -43,12 +43,12 @@ impl WhatYouSayInfo {
         self.confidence
     }
 
-    pub fn to_s(&self) -> String {
+    pub fn inspect(&self) -> String {
         format!(
             "#<WhatYouSay::Info \
                 lang={0} \
                 script=\"{1}\" reliable={2} confidence={3}>",
-            self.lang.to_s(),
+            self.lang.inspect(),
             self.script,
             self.reliable,
             self.confidence

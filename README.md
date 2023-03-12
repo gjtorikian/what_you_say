@@ -39,11 +39,11 @@ assert_predicate(result, :reliable?)
 assert_equal(1, result.confidence)
 ```
 
-You also have to opportunity to `to_s` some output:
+You also have to opportunity to `inspect` some output:
 
 ```ruby
 text = "Եվ ահա ես ստանում եմ մի զանգ պատահական տղայից"
-WhatYouSay._?(text).to_s
+WhatYouSay._?(text).inspect
 #=> #<WhatYouSay::Info lang=#<WhatYouSay::Lang code="hye" name="Հայերեն" eng_name="Armenian"> script="Armenian" reliable=true confidence=1>
 ```
 
