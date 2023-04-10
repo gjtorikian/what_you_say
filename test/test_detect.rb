@@ -47,4 +47,10 @@ class TestWhatYouSayDetect < Minitest::Test
       assert_equal(lang_code, detected_lang.code)
     end
   end
+
+  def test_reliability
+    result = WhatYouSay._?("oeuvre")
+
+    refute_predicate(result, :reliable?)
+  end
 end
