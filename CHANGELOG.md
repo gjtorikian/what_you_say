@@ -1,5 +1,17 @@
 # Changelog
 
+## [v0.4.1](https://github.com/gjtorikian/what_you_say/tree/v0.4.1) (2023-04-11)
+
+[Full Changelog](https://github.com/gjtorikian/what_you_say/compare/v0.3.0...v0.4.1)
+
+**Merged pull requests:**
+
+- :gem: bump to 0.4.1 [\#6](https://github.com/gjtorikian/what_you_say/pull/6) ([gjtorikian](https://github.com/gjtorikian))
+- Revert "Switch backend" [\#5](https://github.com/gjtorikian/what_you_say/pull/5) ([gjtorikian](https://github.com/gjtorikian))
+- Switch backend [\#4](https://github.com/gjtorikian/what_you_say/pull/4) ([gjtorikian](https://github.com/gjtorikian))
+- Bump magnus from 0.5.2 to 0.5.3 [\#3](https://github.com/gjtorikian/what_you_say/pull/3) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump magnus from 0.5.1 to 0.5.2 [\#2](https://github.com/gjtorikian/what_you_say/pull/2) ([dependabot[bot]](https://github.com/apps/dependabot))
+
 ## [v0.3.0](https://github.com/gjtorikian/what_you_say/tree/v0.3.0) (2023-03-12)
 
 [Full Changelog](https://github.com/gjtorikian/what_you_say/compare/v0.2.0...v0.3.0)
