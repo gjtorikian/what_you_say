@@ -31,12 +31,8 @@ text = "Ĉu vi ne volas eklerni Esperanton? Bonvolu! Estas unu de la plej bonaj 
 
 result = WhatYouSay._?(text)
 
-assert_equal("epo", result.lang.code)
-assert_equal("Esperanto", result.lang.name)
-assert_equal("Esperanto", result.lang.eng_name)
-assert_equal("Latin", result.script)
-assert_predicate(result, :reliable?)
-assert_equal(1, result.confidence)
+assert_equal("epo", result.code)
+assert_equal("esperanto", result.eng_name)
 ```
 
 You also have to opportunity to `inspect` some output:
@@ -44,7 +40,7 @@ You also have to opportunity to `inspect` some output:
 ```ruby
 text = "Եվ ահա ես ստանում եմ մի զանգ պատահական տղայից"
 WhatYouSay._?(text).inspect
-#=> #<WhatYouSay::Info lang=#<WhatYouSay::Lang code="hye" name="Հայերեն" eng_name="Armenian"> script="Armenian" reliable=true confidence=1>
+#=> #<WhatYouSay::Lang code="hye" eng_name="Armenian">
 ```
 
 ## Development
