@@ -40,7 +40,7 @@ You also have to opportunity to `inspect` some output:
 ```ruby
 text = "Եվ ահա ես ստանում եմ մի զանգ պատահական տղայից"
 WhatYouSay._?(text).inspect
-#=> #<WhatYouSay::Info lang=#<WhatYouSay::Lang code="hye" name="Հայերեն" eng_name="Armenian"> script="Armenian" reliable=true confidence=1>
+#=> #<WhatYouSay::Lang code="hye" eng_name="armenian">
 ```
 
 ## Development

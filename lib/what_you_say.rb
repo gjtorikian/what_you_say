@@ -2,7 +2,6 @@
 
 require_relative "what_you_say/extension"
 
-require "what_you_say/info"
 require "what_you_say/lang"
 require "what_you_say/version"
 
