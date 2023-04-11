@@ -9,7 +9,7 @@ on:
       - "lib/what_you_say/version.rb"
 
 env:
-  CACHE_KEY_PREFIX: "cruby-v1-"
+  CACHE_KEY_PREFIX: "cruby-v2-"
 
 # "3.1,3.2" # SUPPORTED_RUBY_VERSIONS
 # ["3.1", "3.2"] # SUPPORTED_RUBY_MATRIX
