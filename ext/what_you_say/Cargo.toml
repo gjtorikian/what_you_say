@@ -4,8 +4,8 @@ version = "1.0.0"
 edition = "2021"
 
 [dependencies]
-lingua = "1.4"
 magnus =  "0.5"
+whatlang = "0.16"
 
 [lib]
 name = "what_you_say"
