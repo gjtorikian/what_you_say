@@ -1,14 +1,12 @@
 # WhatYouSay
 
-Quick and easy natural language detection wrapping the [Whatlang Rust crate](https://github.com/greyblake/whatlang-rs). Instantly identify the source language of a piece of text.
+Quick and easy natural language detection wrapping the [lingua-rs Rust crate](https://github.com/pemistahl/lingua-rs). Instantly identify the source language of a piece of text.
 
 ![What you say!!](https://user-images.githubusercontent.com/64050/224237944-ceb2570c-d544-474a-8c91-41433efdee43.png)
 
-- Supports [69 languages](https://github.com/greyblake/whatlang-rs/blob/master/SUPPORTED_LANGUAGES.md) (nice!)
+- Supports [75+ languages](https://github.com/pemistahl/lingua-rs/tree/main#3-which-languages-are-supported)
 - Core library is written in Rust; this is a Ruby wrapper to it
 - Lightweight, fast, and simple
-- Recognizes not only a language, but also a script (Latin, Cyrillic, etc)
-- Provides reliability information
 
 ## Installation
 
@@ -22,7 +20,9 @@ If bundler is not being used to manage dependencies, install the gem by executin
 
 ## Usage
 
-The method to call is `_?`. Why? Because. Pass in the text whose language you want to detect:
+The method to call is `_?`. Why? Because it looked nice.
+
+Pass in the text whose language you want to detect:
 
 ```ruby
 require "what_you_say"
@@ -32,11 +32,7 @@ text = "Ĉu vi ne volas eklerni Esperanton? Bonvolu! Estas unu de la plej bonaj 
 result = WhatYouSay._?(text)
 
 assert_equal("epo", result.lang.code)
-assert_equal("Esperanto", result.lang.name)
-assert_equal("Esperanto", result.lang.eng_name)
-assert_equal("Latin", result.script)
-assert_predicate(result, :reliable?)
-assert_equal(1, result.confidence)
+assert_equal("esperanto", result.lang.eng_name)
 ```
 
 You also have to opportunity to `inspect` some output:
