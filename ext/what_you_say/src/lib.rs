@@ -1,11 +1,14 @@
 extern crate core;
 
+use info::WhatYouSayInfo;
 use lang::WhatYouSayLang;
-use lingua::LanguageDetectorBuilder;
+use whatlang::detect as whatlang_detect;
 
-use magnus::{define_module, function, method, scan_args, Error, Module, Object, RHash, Value};
+use magnus::{
+    define_module, exception, function, method, scan_args, Error, Module, Object, RHash, Value,
+};
 
-fn detect_text<'a>(args: &[Value]) -> Result<WhatYouSayLang, magnus::Error> {
+fn detect_text<'a>(args: &[Value]) -> Result<WhatYouSayInfo, magnus::Error> {
     let args = scan_args::scan_args(args)?;
     let (rb_text,): (String,) = args.required;
     let _: () = args.optional;
@@ -17,23 +20,25 @@ fn detect_text<'a>(args: &[Value]) -> Result<WhatYouSayLang, magnus::Error> {
         scan_args::get_kwargs::<_, (), (Option<RHash>,), ()>(args.keywords, &[], &["options"])?;
     let _rb_options = kwargs.optional;
 
-    let mut binding = LanguageDetectorBuilder::from_all_languages();
-    let builder = binding.with_preloaded_language_models();
+    match whatlang_detect(&rb_text) {
+        Some(info) => {
+            let lang = WhatYouSayLang::new(
+                info.lang().code().to_string(),
+                info.lang().name().to_string(),
+                info.lang().eng_name().to_string(),
+            );
 
-    let detector = builder.build();
-
-    match detector.detect_language_of(rb_text) {
-        Some(lang) => {
-            let lang = WhatYouSayLang::new(lang.iso_code_639_3().to_string(), lang.to_string());
-
-            Ok(lang)
+            let script = info.script().to_string();
+            let reliable = info.is_reliable();
+            let confidence = info.confidence();
+            let what_you_say_info = WhatYouSayInfo::new(lang, script, reliable, confidence);
+            Ok(what_you_say_info)
         }
-        None => Ok(unknown_lang()),
+        None => Err(Error::new(
+            exception::arg_error(),
+            format!("unable to identify text: {rb_text}"),
+        )),
     }
-}
-
-fn unknown_lang() -> WhatYouSayLang {
-    WhatYouSayLang::new("???".to_string(), "Unknown".to_string())
 }
 
 #[magnus::init]
@@ -42,13 +47,23 @@ fn init() -> Result<(), Error> {
 
     module.define_module_function("detect", function!(detect_text, -1))?;
 
+    let c_info = module.define_class("Info", Default::default())?;
+
+    c_info.define_method("lang", method!(WhatYouSayInfo::lang, 0))?;
+    c_info.define_method("script", method!(WhatYouSayInfo::script, 0))?;
+    c_info.define_method("reliable?", method!(WhatYouSayInfo::reliable, 0))?;
+    c_info.define_method("confidence", method!(WhatYouSayInfo::confidence, 0))?;
+    c_info.define_method("inspect", method!(WhatYouSayInfo::inspect, 0))?;
+
     let c_lang = module.define_class("Lang", Default::default())?;
     c_lang.define_singleton_method("all", function!(WhatYouSayLang::all, 0))?;
     c_lang.define_method("code", method!(WhatYouSayLang::code, 0))?;
+    c_lang.define_method("name", method!(WhatYouSayLang::name, 0))?;
     c_lang.define_method("eng_name", method!(WhatYouSayLang::eng_name, 0))?;
     c_lang.define_method("inspect", method!(WhatYouSayLang::inspect, 0))?;
 
     Ok(())
 }
 
+pub mod info;
 pub mod lang;
