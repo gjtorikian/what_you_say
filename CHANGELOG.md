@@ -1,5 +1,9 @@
 # Changelog
 
+## [v0.4.2](https://github.com/gjtorikian/what_you_say/tree/v0.4.2) (2023-04-11)
+
+[Full Changelog](https://github.com/gjtorikian/what_you_say/compare/v0.4.1...v0.4.2)
+
 ## [v0.4.1](https://github.com/gjtorikian/what_you_say/tree/v0.4.1) (2023-04-11)
 
 [Full Changelog](https://github.com/gjtorikian/what_you_say/compare/v0.3.0...v0.4.1)
