@@ -44,8 +44,10 @@ impl WhatYouSay {
                         }
                     };
 
-                    let language = Language::from_str(&allowed).unwrap();
-                    allowed_languages.push(language);
+                    // if !Ok, it maeans the language could not be found
+                    if let Ok(language) = Language::from_str(&allowed) {
+                        allowed_languages.push(language)
+                    }
                 }
                 LanguageDetectorBuilder::from_languages(&allowed_languages)
             }

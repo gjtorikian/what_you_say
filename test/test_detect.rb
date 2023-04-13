@@ -51,6 +51,44 @@ class TestWhatYouSayDetect < Minitest::Test
     assert_equal("eng", result.code)
   end
 
+  def test_allowlist_accepts_postgres_dictionaries
+    dicts = [
+      "arabic",
+      "armenian",
+      "basque",
+      "catalan",
+      "danish",
+      "dutch",
+      "english",
+      "finnish",
+      "french",
+      "german",
+      "greek",
+      "hindi",
+      "hungarian",
+      "indonesian",
+      "irish",
+      "italian",
+      "lithuanian",
+      "nepali",
+      "norwegian",
+      "portuguese",
+      "romanian",
+      "russian",
+      "serbian",
+      "spanish",
+      "swedish",
+      "tamil",
+      "turkish",
+      "yiddish",
+    ]
+
+    text = "สวัสดี Rágis hello"
+    result = WhatYouSay.new(allowlist: dicts).detect_language(text)
+
+    assert_equal("spa", result.code)
+  end
+
   def test_returns_unknown_language
     text = "日本語"
 
