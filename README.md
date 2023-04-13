@@ -20,7 +20,7 @@ If bundler is not being used to manage dependencies, install the gem by executin
 
 ## Usage
 
-The method to call is `_?`. Why? Because it looked nice.
+The method to call is `detect_language`.
 
 Pass in the text whose language you want to detect:
 
@@ -29,7 +29,7 @@ require "what_you_say"
 
 text = "Ĉu vi ne volas eklerni Esperanton? Bonvolu! Estas unu de la plej bonaj aferoj!"
 
-result = WhatYouSay._?(text)
+result = WhatYouSay.new.detect_language(text)
 
 assert_equal("epo", result.lang.code)
 assert_equal("esperanto", result.lang.eng_name)
@@ -39,8 +39,33 @@ You also have to opportunity to `inspect` some output:
 
 ```ruby
 text = "Եվ ահա ես ստանում եմ մի զանգ պատահական տղայից"
-WhatYouSay._?(text).inspect
+WhatYouSay.new.detect_language(text).inspect
 #=> #<WhatYouSay::Lang code="hye" eng_name="armenian">
+```
+
+Not everything in life is perfect, and neither is this lib. Sometimes language detection will be wildly mistaken. You
+can attempt to correct this by passing in an `allowlist` of supported languages:
+
+```ruby
+text = "สวัสดี Rágis hello"
+result = WhatYouSay.new.detect_language(text)
+
+assert_equal("spanish", result.eng_name)
+
+result = WhatYouSay.new(allowlist: ["English", "Thai"]).detect_language(text)
+
+assert_equal("eng", result.code)
+```
+
+If a language truly cannot be detected, the `Unknown` language type is returned:
+
+```ruby
+text = "日本語"
+
+result = WhatYouSay.new(allowlist: ["English", "Thai"]).detect_language(text)
+
+assert_equal("???", result.code)
+assert_equal("unknown", result.eng_name)
 ```
 
 ## Development
