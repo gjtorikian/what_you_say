@@ -10,13 +10,22 @@ pub struct WhatYouSayLang {
 unsafe impl magnus::IntoValueFromNative for WhatYouSayLang {}
 
 impl WhatYouSayLang {
-    pub fn new(code: String, eng_name: String) -> WhatYouSayLang {
-        WhatYouSayLang { code, eng_name }
+    pub fn new(lang: Option<Language>) -> WhatYouSayLang {
+        match lang {
+            Some(lang) => WhatYouSayLang {
+                code: lang.iso_code_639_3().to_string(),
+                eng_name: lang.to_string(),
+            },
+            None => WhatYouSayLang {
+                code: "???".to_string(),
+                eng_name: "unknown".to_string(),
+            },
+        }
     }
     pub fn all() -> Vec<WhatYouSayLang> {
         Language::all()
             .into_iter()
-            .map(|lang| WhatYouSayLang::new(lang.iso_code_639_3().to_string(), lang.to_string()))
+            .map(|lang| WhatYouSayLang::new(Some(lang)))
             .collect::<Vec<_>>()
     }
 

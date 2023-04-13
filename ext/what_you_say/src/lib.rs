@@ -1,48 +1,84 @@
 extern crate core;
 
+use std::str::FromStr;
+
 use lang::WhatYouSayLang;
-use lingua::LanguageDetectorBuilder;
+use lingua::{Language, LanguageDetector, LanguageDetectorBuilder};
 
-use magnus::{define_module, function, method, scan_args, Error, Module, Object, RHash, Value};
+use magnus::{
+    define_class, exception, function, method, scan_args, Error, Module, Object, RArray, Value,
+};
 
-fn detect_text<'a>(args: &[Value]) -> Result<WhatYouSayLang, magnus::Error> {
-    let args = scan_args::scan_args(args)?;
-    let (rb_text,): (String,) = args.required;
-    let _: () = args.optional;
-    let _: () = args.splat;
-    let _: () = args.trailing;
-    let _: () = args.block;
-
-    let kwargs =
-        scan_args::get_kwargs::<_, (), (Option<RHash>,), ()>(args.keywords, &[], &["options"])?;
-    let _rb_options = kwargs.optional;
-
-    let mut binding = LanguageDetectorBuilder::from_all_languages();
-    let builder = binding.with_preloaded_language_models();
-
-    let detector = builder.build();
-
-    match detector.detect_language_of(rb_text) {
-        Some(lang) => {
-            let lang = WhatYouSayLang::new(lang.iso_code_639_3().to_string(), lang.to_string());
-
-            Ok(lang)
-        }
-        None => Ok(unknown_lang()),
-    }
+#[magnus::wrap(class = "WhatYouSay")]
+struct WhatYouSay {
+    detector: LanguageDetector,
 }
 
-fn unknown_lang() -> WhatYouSayLang {
-    WhatYouSayLang::new("???".to_string(), "Unknown".to_string())
+impl WhatYouSay {
+    fn new(args: &[Value]) -> Result<Self, magnus::Error> {
+        let args = scan_args::scan_args(args)?;
+        let _: () = args.required;
+        let _: () = args.optional;
+        let _: () = args.splat;
+        let _: () = args.trailing;
+        let _: () = args.block;
+
+        let kwargs = scan_args::get_kwargs::<_, (), (Option<RArray>,), ()>(
+            args.keywords,
+            &[],
+            &["allowlist"],
+        )?;
+        let (rb_allowlist,) = kwargs.optional;
+
+        let mut binding = match rb_allowlist {
+            Some(languages) => {
+                let mut allowed_languages = vec![];
+                for allowed in languages.each() {
+                    let allowed = match allowed {
+                        Ok(allowed) => allowed.to_string(),
+                        Err(_) => {
+                            return Err(magnus::Error::new(
+                                exception::runtime_error(),
+                                format!("{allowed:?}"),
+                            ))
+                        }
+                    };
+
+                    let language = Language::from_str(&allowed).unwrap();
+                    allowed_languages.push(language);
+                }
+                LanguageDetectorBuilder::from_languages(&allowed_languages)
+            }
+            None => LanguageDetectorBuilder::from_all_languages(),
+        };
+
+        let builder = binding.with_preloaded_language_models();
+
+        let detector = builder.build();
+
+        Ok(WhatYouSay { detector })
+    }
+
+    pub fn detect_text(&self, rb_text: String) -> Result<WhatYouSayLang, magnus::Error> {
+        match self.detector.detect_language_of(rb_text) {
+            Some(lang) => {
+                let result = WhatYouSayLang::new(Some(lang));
+
+                Ok(result)
+            }
+            None => Ok(WhatYouSayLang::new(None)),
+        }
+    }
 }
 
 #[magnus::init]
 fn init() -> Result<(), Error> {
-    let module = define_module("WhatYouSay")?;
+    let c_whatyousay = define_class("WhatYouSay", Default::default())?;
 
-    module.define_module_function("detect", function!(detect_text, -1))?;
+    c_whatyousay.define_singleton_method("new", function!(WhatYouSay::new, -1))?;
+    c_whatyousay.define_method("detect_text", method!(WhatYouSay::detect_text, 1))?;
 
-    let c_lang = module.define_class("Lang", Default::default())?;
+    let c_lang = c_whatyousay.define_class("Lang", Default::default())?;
     c_lang.define_singleton_method("all", function!(WhatYouSayLang::all, 0))?;
     c_lang.define_method("code", method!(WhatYouSayLang::code, 0))?;
     c_lang.define_method("eng_name", method!(WhatYouSayLang::eng_name, 0))?;
