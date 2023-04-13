@@ -9,7 +9,7 @@ Gem::Specification.new do |spec|
   spec.email = ["gjtorikian@users.noreply.github.com"]
 
   spec.summary = "Fast and lightweight language identification library. Written in Rust, wrapped in Ruby."
-  spec.description = "Natural language detectio with a focus on simplicity and performance. Currently wraps the whatlang Rust crate."
+  spec.description = "Natural language detection with a focus on simplicity and performance. Currently wraps the lingua-rs Rust crate."
   spec.homepage = "https://github.com/gjtorikian/what_you_say"
   spec.license = "MIT"
 

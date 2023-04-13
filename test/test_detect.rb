@@ -10,14 +10,14 @@ class TestWhatYouSayDetect < Minitest::Test
   end
 
   def test_that_it_detects
-    result = WhatYouSay._?(@esperanto)
+    result = WhatYouSay.new.detect_language(@esperanto)
 
     assert_equal("epo", result.code)
     assert_equal("esperanto", result.eng_name)
   end
 
   def test_inspect_works
-    result = WhatYouSay._?(@esperanto)
+    result = WhatYouSay.new.detect_language(@esperanto)
 
     actual_lang = "#<WhatYouSay::Lang code=\"epo\" eng_name=\"esperanto\">"
 
@@ -28,15 +28,34 @@ class TestWhatYouSayDetect < Minitest::Test
     example_data = JSON.parse(File.read(File.join("test", "fixtures", "examples.json")))
 
     example_data.each_pair do |lang_code, text|
-      detected_lang = WhatYouSay._?(text)
+      detected_lang = WhatYouSay.new.detect_language(text)
 
       assert_equal(lang_code, detected_lang.code)
     end
   end
 
   def test_detects_japanese
-    result = WhatYouSay._?(@japanese)
+    result = WhatYouSay.new.detect_language(@japanese)
 
     assert_equal("jpn", result.code)
+  end
+
+  def test_works_with_allowlist
+    text = "สวัสดี Rágis hello"
+    result = WhatYouSay.new.detect_language(text)
+
+    assert_equal("spanish", result.eng_name)
+
+    result = WhatYouSay.new(allowlist: ["English", "Thai"]).detect_language(text)
+
+    assert_equal("eng", result.code)
+  end
+
+  def test_returns_unknown_language
+    text = "日本語"
+
+    result = WhatYouSay.new(allowlist: ["English", "Thai"]).detect_language(text)
+
+    assert_equal("???", result.code)
   end
 end
