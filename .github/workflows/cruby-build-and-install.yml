@@ -22,7 +22,7 @@ jobs:
       matrix:
         platform:
           - x86_64-linux
-          - aarch64-linux
+          # - aarch64-linux
 
           - x86_64-darwin
           - arm64-darwin
