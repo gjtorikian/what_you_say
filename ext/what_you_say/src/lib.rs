@@ -30,7 +30,7 @@ impl WhatYouSay {
         )?;
         let (rb_allowlist,) = kwargs.optional;
 
-        let mut binding = match rb_allowlist {
+        let mut builder = match rb_allowlist {
             Some(languages) => {
                 let mut allowed_languages = vec![];
                 for allowed in languages.each() {
@@ -54,7 +54,8 @@ impl WhatYouSay {
             None => LanguageDetectorBuilder::from_all_languages(),
         };
 
-        let builder = binding.with_preloaded_language_models();
+        // FIXME: this doesn't seem to work when tests are run in parallel
+        // builder.with_preloaded_language_models();
 
         let detector = builder.build();
 
