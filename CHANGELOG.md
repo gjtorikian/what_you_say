@@ -1,5 +1,13 @@
 # Changelog
 
+## [v0.5.2](https://github.com/gjtorikian/what_you_say/tree/v0.5.2) (2023-04-16)
+
+[Full Changelog](https://github.com/gjtorikian/what_you_say/compare/v0.5.1...v0.5.2)
+
+**Merged pull requests:**
+
+- Update dependencies [\#8](https://github.com/gjtorikian/what_you_say/pull/8) ([gjtorikian](https://github.com/gjtorikian))
+
 ## [v0.5.1](https://github.com/gjtorikian/what_you_say/tree/v0.5.1) (2023-04-13)
 
 [Full Changelog](https://github.com/gjtorikian/what_you_say/compare/v0.5.0...v0.5.1)
