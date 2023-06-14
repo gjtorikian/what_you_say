@@ -1,0 +1,24 @@
+name: Skip on ignored paths
+# cf. https://github.com/laurencee/GithubActionTesting/commit/876ef30bc6aff6f981ff829dbee72f3ef2e2714c#diff-b7378c471fab26e43e7f20360b3318f01ee5263f551d7ae7e1326b6e9c38448e
+
+on:
+  push:
+    branches:
+      - main
+      - production
+    paths:
+      - "CHANGELOG.md"
+
+jobs:
+  test:
+    name: "✌️Test✌️"
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os:
+          - ubuntu-latest
+          - macos-latest
+          - windows-latest
+
+    steps:
+      - run: 'echo "No testing required" '
