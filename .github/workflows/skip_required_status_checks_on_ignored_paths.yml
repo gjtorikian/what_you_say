@@ -3,9 +3,6 @@ name: Skip on ignored paths
 
 on:
   push:
-    branches:
-      - main
-      - production
     paths:
       - "CHANGELOG.md"
 
