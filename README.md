@@ -32,7 +32,7 @@ text = "Ĉu vi ne volas eklerni Esperanton? Bonvolu! Estas unu de la plej bonaj 
 result = WhatYouSay.new.detect_language(text)
 
 assert_equal("epo", result.lang.code)
-assert_equal("esperanto", result.lang.eng_name)
+assert_equal("Esperanto", result.lang.eng_name)
 ```
 
 You also have to opportunity to `inspect` some output:

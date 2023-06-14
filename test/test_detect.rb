@@ -13,13 +13,13 @@ class TestWhatYouSayDetect < Minitest::Test
     result = WhatYouSay.new.detect_language(@esperanto)
 
     assert_equal("epo", result.code)
-    assert_equal("esperanto", result.eng_name)
+    assert_equal("Esperanto", result.eng_name)
   end
 
   def test_inspect_works
     result = WhatYouSay.new.detect_language(@esperanto)
 
-    actual_lang = "#<WhatYouSay::Lang code=\"epo\" eng_name=\"esperanto\">"
+    actual_lang = "#<WhatYouSay::Lang code=\"epo\" eng_name=\"Esperanto\">"
 
     assert_equal(actual_lang, result.inspect)
   end
@@ -41,14 +41,14 @@ class TestWhatYouSayDetect < Minitest::Test
   end
 
   def test_works_with_allowlist
-    text = "สวัสดี Rágis hello"
+    text = "สวัสดี สวัสดี Rágis hola mi amigo"
     result = WhatYouSay.new.detect_language(text)
 
-    assert_equal("spanish", result.eng_name)
+    assert_equal("Thai", result.eng_name)
 
-    result = WhatYouSay.new(allowlist: ["English", "Thai"]).detect_language(text)
+    result = WhatYouSay.new(allowlist: ["English", "Spanish", "Portugese"]).detect_language(text)
 
-    assert_equal("eng", result.code)
+    assert_equal("Spanish", result.eng_name)
   end
 
   def test_allowlist_accepts_postgres_dictionaries
