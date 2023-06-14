@@ -1,5 +1,14 @@
 # Changelog
 
+## [v0.6.0](https://github.com/gjtorikian/what_you_say/tree/v0.6.0) (2023-06-14)
+
+[Full Changelog](https://github.com/gjtorikian/what_you_say/compare/v0.5.2...v0.6.0)
+
+**Merged pull requests:**
+
+- Bump lingua from 1.4.0 to 1.5.0 [\#10](https://github.com/gjtorikian/what_you_say/pull/10) ([dependabot[bot]](https://github.com/apps/dependabot))
+- Bump magnus from 0.5.3 to 0.5.4 [\#9](https://github.com/gjtorikian/what_you_say/pull/9) ([dependabot[bot]](https://github.com/apps/dependabot))
+
 ## [v0.5.2](https://github.com/gjtorikian/what_you_say/tree/v0.5.2) (2023-04-16)
 
 [Full Changelog](https://github.com/gjtorikian/what_you_say/compare/v0.5.1...v0.5.2)
