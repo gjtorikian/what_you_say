@@ -1,0 +1,20 @@
+name: Release
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+    paths:
+      - lib/what_you_say/version.rb
+
+jobs:
+  ruby:
+    uses: yettoapp/actions/.github/workflows/ruby_gem_release.yml@main
+    secrets:
+      rubygems_api_key: ${{ secrets.RUBYGEMS_API_BOT_KEY }}
+      gh_token: ${{ secrets.GITHUB_TOKEN }}
+    with:
+      gem_name: what_you_say
+      version_filepath: lib/what_you_say/version.rb
+      oxidized: true
