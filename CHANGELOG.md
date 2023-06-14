@@ -1,3 +1,5 @@
+## [v0.6.1] - 14-06-2023
+
 # Changelog
 
 ## [v0.6.0](https://github.com/gjtorikian/what_you_say/tree/v0.6.0) (2023-06-14)
