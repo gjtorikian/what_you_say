@@ -5,7 +5,7 @@ edition = "2021"
 
 [dependencies]
 lingua = "1.5"
-magnus =  "0.5"
+magnus =  "0.6"
 
 [lib]
 name = "what_you_say"
