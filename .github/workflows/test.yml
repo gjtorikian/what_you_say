@@ -17,6 +17,8 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.head_ref }}
 
       - uses: gjtorikian/actions/setup-ruby-and-rust@main
         with:
