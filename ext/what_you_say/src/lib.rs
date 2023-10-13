@@ -16,12 +16,7 @@ struct WhatYouSay {
 
 impl WhatYouSay {
     fn new(args: &[Value]) -> Result<Self, magnus::Error> {
-        let args = scan_args::scan_args(args)?;
-        let _: () = args.required;
-        let _: () = args.optional;
-        let _: () = args.splat;
-        let _: () = args.trailing;
-        let _: () = args.block;
+        let args = scan_args::scan_args::<(), (), (), (), _, ()>(args)?;
 
         let kwargs = scan_args::get_kwargs::<_, (), (Option<RArray>,), ()>(
             args.keywords,
