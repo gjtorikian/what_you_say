@@ -16,12 +16,7 @@ struct WhatYouSay {
 
 impl WhatYouSay {
     fn new(args: &[Value]) -> Result<Self, magnus::Error> {
-        let args = scan_args::scan_args(args)?;
-        let _: () = args.required;
-        let _: () = args.optional;
-        let _: () = args.splat;
-        let _: () = args.trailing;
-        let _: () = args.block;
+        let args = scan_args::scan_args::<(), (), (), (), _, ()>(args)?;
 
         let kwargs = scan_args::get_kwargs::<_, (), (Option<RArray>,), ()>(
             args.keywords,
@@ -76,12 +71,12 @@ impl WhatYouSay {
 
 #[magnus::init]
 fn init() -> Result<(), Error> {
-    let c_whatyousay = define_class("WhatYouSay", Default::default())?;
+    let c_whatyousay = define_class("WhatYouSay", magnus::class::object())?;
 
     c_whatyousay.define_singleton_method("new", function!(WhatYouSay::new, -1))?;
     c_whatyousay.define_method("detect_text", method!(WhatYouSay::detect_text, 1))?;
 
-    let c_lang = c_whatyousay.define_class("Lang", Default::default())?;
+    let c_lang = c_whatyousay.define_class("Lang", magnus::class::object())?;
     c_lang.define_singleton_method("all", function!(WhatYouSayLang::all, 0))?;
     c_lang.define_method("code", method!(WhatYouSayLang::code, 0))?;
     c_lang.define_method("eng_name", method!(WhatYouSayLang::eng_name, 0))?;
