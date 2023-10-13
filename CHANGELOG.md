@@ -1,3 +1,10 @@
+## [v0.6.4] - 13-10-2023
+## What's Changed
+* Bump actions/checkout from 3 to 4 by @dependabot in https://github.com/gjtorikian/what_you_say/pull/13
+* Bump magnus from 0.5.4 to 0.6.2 by @dependabot in https://github.com/gjtorikian/what_you_say/pull/14
+
+
+**Full Changelog**: https://github.com/gjtorikian/what_you_say/compare/v0.6.3...v0.6.4
 ## [v0.6.2] - 14-06-2023
 
 ## [v0.6.1] - 14-06-2023
