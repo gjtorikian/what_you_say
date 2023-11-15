@@ -4,7 +4,7 @@ version = "1.0.0"
 edition = "2021"
 
 [dependencies]
-lingua = "1.5"
+lingua = "1.6"
 magnus =  "0.6"
 
 [lib]
