@@ -41,7 +41,7 @@ class TestWhatYouSayDetect < Minitest::Test
   end
 
   def test_works_with_allowlist
-    text = "สวัสดี สวัสดี Rágis hola mi amigo"
+    text = "สวัสดี สวัสดี hola mi amigo"
     result = WhatYouSay.new.detect_language(text)
 
     assert_equal("Thai", result.eng_name)
