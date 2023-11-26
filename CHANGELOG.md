@@ -1,3 +1,9 @@
+## [v0.6.5] - 26-11-2023
+## What's Changed
+* Bump lingua from 1.5.0 to 1.6.1 by @dependabot in https://github.com/gjtorikian/what_you_say/pull/16
+
+
+**Full Changelog**: https://github.com/gjtorikian/what_you_say/compare/v0.6.4...v0.6.5
 ## [v0.6.4] - 13-10-2023
 ## What's Changed
 * Bump actions/checkout from 3 to 4 by @dependabot in https://github.com/gjtorikian/what_you_say/pull/13
