@@ -1,3 +1,10 @@
+## [v0.6.6] - 28-12-2023
+## What's Changed
+* Bump lingua from 1.6.1 to 1.6.2 by @dependabot in https://github.com/gjtorikian/what_you_say/pull/17
+* Support Ruby 3.3 by @gjtorikian in https://github.com/gjtorikian/what_you_say/pull/18
+
+
+**Full Changelog**: https://github.com/gjtorikian/what_you_say/compare/v0.6.5...v0.6.6
 ## [v0.6.5] - 26-11-2023
 ## What's Changed
 * Bump lingua from 1.5.0 to 1.6.1 by @dependabot in https://github.com/gjtorikian/what_you_say/pull/16
