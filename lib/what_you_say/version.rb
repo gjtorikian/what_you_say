@@ -1,5 +1,5 @@
 # frozen_string_literal: true
 
 class WhatYouSay
-  VERSION = "0.6.5"
+  VERSION = "0.6.6"
 end
