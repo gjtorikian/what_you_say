@@ -13,7 +13,7 @@ Gem::Specification.new do |spec|
   spec.homepage = "https://github.com/gjtorikian/what_you_say"
   spec.license = "MIT"
 
-  spec.required_ruby_version = "~> 3.1"
+  spec.required_ruby_version = ">= 3.1.0"
   # https://github.com/rubygems/rubygems/pull/5852#issuecomment-1231118509
   spec.required_rubygems_version = ">= 3.3.22"
 
