@@ -4,3 +4,4 @@
 
 [workspace]
 members = ["ext/what_you_say"]
+resolver = "2"

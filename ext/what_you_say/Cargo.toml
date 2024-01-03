@@ -2,10 +2,12 @@
 name = "what_you_say"
 version = "1.0.0"
 edition = "2021"
+rust-version = "1.75.0"
+publish = false
 
 [dependencies]
 lingua = "1.6"
-magnus =  "0.6"
+magnus = "0.6"
 
 [lib]
 name = "what_you_say"
