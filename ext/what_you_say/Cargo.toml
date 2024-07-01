@@ -7,7 +7,7 @@ publish = false
 
 [dependencies]
 lingua = "1.6"
-magnus = "0.6"
+magnus = "0.7"
 
 [lib]
 name = "what_you_say"
