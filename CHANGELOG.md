@@ -1,3 +1,12 @@
+# [v0.6.8] - 29-07-2024
+## What's Changed
+* Bump actions/cache from 3 to 4 by @dependabot in https://github.com/gjtorikian/what_you_say/pull/20
+* Bump magnus from 0.6.2 to 0.6.3 by @dependabot in https://github.com/gjtorikian/what_you_say/pull/21
+* Bump magnus from 0.6.3 to 0.6.4 by @dependabot in https://github.com/gjtorikian/what_you_say/pull/22
+* Bump magnus from 0.6.4 to 0.7.1 by @dependabot in https://github.com/gjtorikian/what_you_say/pull/23
+
+
+**Full Changelog**: https://github.com/gjtorikian/what_you_say/compare/v0.6.7...v0.6.8
 ## [v0.6.7] - 03-01-2024
 ## What's Changed
 * Better Ruby 3.3 support by @gjtorikian in https://github.com/gjtorikian/what_you_say/pull/19
