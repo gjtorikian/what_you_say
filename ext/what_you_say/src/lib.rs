@@ -6,7 +6,7 @@ use lang::WhatYouSayLang;
 use lingua::{Language, LanguageDetector, LanguageDetectorBuilder};
 
 use magnus::{
-    define_class, exception, function, method, scan_args, Error, Module, Object, RArray, Value,
+    define_class, function, method, scan_args, Error, Module, Object, RArray, Value,
 };
 
 #[magnus::wrap(class = "WhatYouSay")]
@@ -28,19 +28,8 @@ impl WhatYouSay {
         let mut builder = match rb_allowlist {
             Some(languages) => {
                 let mut allowed_languages = vec![];
-                for allowed in languages.each() {
-                    let allowed = match allowed {
-                        Ok(allowed) => allowed.to_string(),
-                        Err(_) => {
-                            return Err(magnus::Error::new(
-                                exception::runtime_error(),
-                                format!("{allowed:?}"),
-                            ))
-                        }
-                    };
-
-                    // if !Ok, it maeans the language could not be found
-                    if let Ok(language) = Language::from_str(&allowed) {
+                for language in languages.into_iter() {
+                    if let Ok(language) = Language::from_str(&language.to_string()) {
                         allowed_languages.push(language)
                     }
                 }
