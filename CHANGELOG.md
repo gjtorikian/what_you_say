@@ -1,3 +1,9 @@
+# [v0.6.9] - 19-08-2024
+## What's Changed
+* update dependencies by @gjtorikian in https://github.com/gjtorikian/what_you_say/pull/25
+
+
+**Full Changelog**: https://github.com/gjtorikian/what_you_say/compare/v0.6.8...v0.6.9
 # [v0.6.8] - 29-07-2024
 ## What's Changed
 * Bump actions/cache from 3 to 4 by @dependabot in https://github.com/gjtorikian/what_you_say/pull/20
