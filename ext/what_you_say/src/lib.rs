@@ -5,9 +5,7 @@ use std::str::FromStr;
 use lang::WhatYouSayLang;
 use lingua::{Language, LanguageDetector, LanguageDetectorBuilder};
 
-use magnus::{
-    define_class, function, method, scan_args, Error, Module, Object, RArray, Value,
-};
+use magnus::{define_class, function, method, scan_args, Error, Module, Object, RArray, Value};
 
 #[magnus::wrap(class = "WhatYouSay")]
 struct WhatYouSay {
