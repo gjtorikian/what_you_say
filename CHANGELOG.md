@@ -1,3 +1,9 @@
+# [v0.6.11] - 08-01-2025
+## What's Changed
+* Update dependencies by @gjtorikian in https://github.com/gjtorikian/what_you_say/pull/29
+
+
+**Full Changelog**: https://github.com/gjtorikian/what_you_say/compare/v0.6.10...v0.6.11
 # [v0.6.10] - 23-12-2024
 ## What's Changed
 * Update deps by @gjtorikian in https://github.com/gjtorikian/what_you_say/pull/27
