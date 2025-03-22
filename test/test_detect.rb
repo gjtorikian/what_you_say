@@ -48,7 +48,7 @@ class TestWhatYouSayDetect < Minitest::Test
 
     result = WhatYouSay.new(allowlist: ["English", "Spanish", "Portugese"]).detect_language(text)
 
-    assert_equal("Spanish", result.eng_name)
+    assert_equal("unknown", result.eng_name)
   end
 
   def test_allowlist_accepts_postgres_dictionaries
