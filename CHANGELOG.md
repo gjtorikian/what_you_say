@@ -1,3 +1,9 @@
+# [v0.6.12] - 22-03-2025
+## What's Changed
+* Bump lingua from 1.6.2 to 1.7.1 by @dependabot in https://github.com/gjtorikian/what_you_say/pull/31
+
+
+**Full Changelog**: https://github.com/gjtorikian/what_you_say/compare/v0.6.11...v0.6.12
 # [v0.6.11] - 08-01-2025
 ## What's Changed
 * Update dependencies by @gjtorikian in https://github.com/gjtorikian/what_you_say/pull/29
