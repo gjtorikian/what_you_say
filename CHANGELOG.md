@@ -1,3 +1,15 @@
+# [v0.6.13] - 12-12-2025
+## What's Changed
+* Bump lingua from 1.7.1 to 1.7.2 by @dependabot[bot] in https://github.com/gjtorikian/what_you_say/pull/33
+* Bump actions/checkout from 4 to 5 by @dependabot[bot] in https://github.com/gjtorikian/what_you_say/pull/34
+* Bump magnus from 0.7.1 to 0.8.0 by @dependabot[bot] in https://github.com/gjtorikian/what_you_say/pull/35
+* Bump magnus from 0.8.0 to 0.8.1 by @dependabot[bot] in https://github.com/gjtorikian/what_you_say/pull/36
+* Bump magnus from 0.8.1 to 0.8.2 by @dependabot[bot] in https://github.com/gjtorikian/what_you_say/pull/37
+* Bump actions/checkout from 5 to 6 by @dependabot[bot] in https://github.com/gjtorikian/what_you_say/pull/38
+* Bump actions/cache from 4 to 5 by @dependabot[bot] in https://github.com/gjtorikian/what_you_say/pull/39
+
+
+**Full Changelog**: https://github.com/gjtorikian/what_you_say/compare/v0.6.12...v0.6.13
 # [v0.6.12] - 22-03-2025
 ## What's Changed
 * Bump lingua from 1.6.2 to 1.7.1 by @dependabot in https://github.com/gjtorikian/what_you_say/pull/31
