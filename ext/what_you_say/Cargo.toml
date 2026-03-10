@@ -6,7 +6,7 @@ rust-version = "1.75.0"
 publish = false
 
 [dependencies]
-lingua = "1.7"
+lingua = "1.8"
 magnus = "0.8"
 
 [lib]
