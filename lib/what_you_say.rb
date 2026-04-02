@@ -16,4 +16,11 @@ class WhatYouSay
 
     detect_text(text)
   end
+
+  def detect_language_with_confidence(text)
+    raise TypeError, "text must be a String; got a #{text.class}!" unless text.is_a?(String)
+    raise TypeError, "text must be UTF-8 encoded; got #{text.encoding}!" unless text.encoding.name == "UTF-8"
+
+    detect_text_with_confidence(text)
+  end
 end
