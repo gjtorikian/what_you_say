@@ -5,7 +5,7 @@ use std::str::FromStr;
 use lang::WhatYouSayLang;
 use lingua::{Language, LanguageDetector, LanguageDetectorBuilder};
 
-use magnus::{define_class, function, method, scan_args, Error, Module, Object, RArray, Value};
+use magnus::{function, method, scan_args, Error, Module, Object, RArray, Ruby, Value};
 
 #[magnus::wrap(class = "WhatYouSay")]
 struct WhatYouSay {
@@ -54,16 +54,33 @@ impl WhatYouSay {
             None => Ok(WhatYouSayLang::new(None)),
         }
     }
+
+    pub fn detect_text_with_confidence(&self, rb_text: String) -> Result<RArray, magnus::Error> {
+        let ruby = Ruby::get().unwrap();
+        let confidence_values = self.detector.compute_language_confidence_values(rb_text);
+        let result = ruby.ary_new();
+        for (language, confidence) in confidence_values {
+            let pair = ruby.ary_new();
+            pair.push(WhatYouSayLang::new(Some(language)))?;
+            pair.push(ruby.float_from_f64(confidence))?;
+            result.push(pair)?;
+        }
+        Ok(result)
+    }
 }
 
 #[magnus::init]
-fn init() -> Result<(), Error> {
-    let c_whatyousay = define_class("WhatYouSay", magnus::class::object())?;
+fn init(ruby: &Ruby) -> Result<(), Error> {
+    let c_whatyousay = ruby.define_class("WhatYouSay", ruby.class_object())?;
 
     c_whatyousay.define_singleton_method("new", function!(WhatYouSay::new, -1))?;
     c_whatyousay.define_method("detect_text", method!(WhatYouSay::detect_text, 1))?;
+    c_whatyousay.define_method(
+        "detect_text_with_confidence",
+        method!(WhatYouSay::detect_text_with_confidence, 1),
+    )?;
 
-    let c_lang = c_whatyousay.define_class("Lang", magnus::class::object())?;
+    let c_lang = c_whatyousay.define_class("Lang", ruby.class_object())?;
     c_lang.define_singleton_method("all", function!(WhatYouSayLang::all, 0))?;
     c_lang.define_method("code", method!(WhatYouSayLang::code, 0))?;
     c_lang.define_method("eng_name", method!(WhatYouSayLang::eng_name, 0))?;
