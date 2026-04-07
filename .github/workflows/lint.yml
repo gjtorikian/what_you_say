@@ -2,19 +2,18 @@ name: Linting
 
 on:
   pull_request:
-    paths:
-      - "**/*.rb"
-      - "**/*.rs"
 
 jobs:
-  rubocop:
+  ruby:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
-      - uses: ruby/setup-ruby@v1
+
+      - name: Set up Ruby
+        uses: yettoapp/actions/setup-languages@main
         with:
-          rubygems: latest
-          bundler-cache: true # 'bundle install' and cache
+          ruby: true
+
       - name: Rubocop
         run: bundle exec rake rubocop
 
