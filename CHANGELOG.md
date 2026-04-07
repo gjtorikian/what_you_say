@@ -1,3 +1,13 @@
+# [v0.7.0] - 07-04-2026
+## What's Changed
+* Bump lingua from 1.7.2 to 1.8.0 by @dependabot[bot] in https://github.com/gjtorikian/what_you_say/pull/41
+* bring in standard builds by @gjtorikian in https://github.com/gjtorikian/what_you_say/pull/43
+* Expose language confidence values via detect_language_with_confidence by @robertomiranda in https://github.com/gjtorikian/what_you_say/pull/42
+
+## New Contributors
+* @robertomiranda made their first contribution in https://github.com/gjtorikian/what_you_say/pull/42
+
+**Full Changelog**: https://github.com/gjtorikian/what_you_say/compare/v0.6.13...v0.7.0
 # [v0.6.13] - 12-12-2025
 ## What's Changed
 * Bump lingua from 1.7.1 to 1.7.2 by @dependabot[bot] in https://github.com/gjtorikian/what_you_say/pull/33
