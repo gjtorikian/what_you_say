@@ -28,4 +28,5 @@ jobs:
       oxidized: true
       prepare: ${{ github.event_name == 'push' }}
       release: ${{ github.event_name == 'workflow_dispatch' || ((github.event.pull_request.merged == true) && (contains(github.event.pull_request.labels.*.name, 'release'))) }}
+      supported_ruby_versions: "3.3,3.4,4.0"
       oidc_role_to_assume: rg_oidc_akr_2crxmdv7qroeaeq5yjvh

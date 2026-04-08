@@ -12,3 +12,4 @@ magnus = "0.8"
 [lib]
 name = "what_you_say"
 crate-type = ["cdylib"]
+

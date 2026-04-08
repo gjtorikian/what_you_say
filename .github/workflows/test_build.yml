@@ -13,3 +13,4 @@ jobs:
       gh_token: ${{ secrets.GITHUB_TOKEN }}
     with:
       include_musl: true
+      supported_ruby_versions: "3.3,3.4,4.0"
