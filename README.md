@@ -68,6 +68,30 @@ assert_equal("???", result.code)
 assert_equal("unknown", result.eng_name)
 ```
 
+### Detection with confidence scores
+
+Use `detect_language_with_confidence` to get all candidate languages ranked by their detection confidence:
+
+```ruby
+detector = WhatYouSay.new(allowlist: ["English", "French", "German", "Spanish"])
+detector.detect_language_with_confidence("languages are awesome")
+# => [[#<WhatYouSay::Lang code="eng" eng_name="English">, 0.9250120192490813],
+#     [#<WhatYouSay::Lang code="fra" eng_name="French">, 0.043595558302827526],
+#     [#<WhatYouSay::Lang code="deu" eng_name="German">, 0.020589166619996536],
+#     [#<WhatYouSay::Lang code="spa" eng_name="Spanish">, 0.01080325582809466]]
+```
+
+This is useful when you need to apply confidence thresholds, handle ambiguous text, or consider alternative language candidates.
+
+#### Interpreting the result
+
+- Results are ordered from most to least likely.
+- In this example:
+  - English is the most likely match (~92.5%)
+  - French, German, and Spanish are much less likely
+- The scores represent relative confidence across the allowed languages.
+
+
 ## Development
 
 After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake compile test` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
