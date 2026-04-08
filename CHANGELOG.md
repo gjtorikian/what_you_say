@@ -1,3 +1,11 @@
+# [v0.7.1] - 08-04-2026
+## What's Changed
+* Document Detection with confidence by @robertomiranda in https://github.com/gjtorikian/what_you_say/pull/45
+* Reduce native gem size by dropping Ruby 3.2 and stripping binaries by @gjtorikian in https://github.com/gjtorikian/what_you_say/pull/46
+* Drop Ruby 3.2 from the precompiled list by @gjtorikian in https://github.com/gjtorikian/what_you_say/pull/48
+
+
+**Full Changelog**: https://github.com/gjtorikian/what_you_say/compare/v0.7.0...v0.7.1
 # [v0.7.0] - 07-04-2026
 ## What's Changed
 * Bump lingua from 1.7.2 to 1.8.0 by @dependabot[bot] in https://github.com/gjtorikian/what_you_say/pull/41
